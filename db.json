@@ -4,30 +4,33 @@
     "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
     "questions": [
       {
-        "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-        "title": "Como fazer um seletor por id via CSS?",
+        "image": "https://media3.giphy.com/media/BFYLNwlsSNtcc/200.webp?cid=ecf05e47qqt0s0rq5m0kfkb16c9tq51qxny11t66pp3lw9xk&rid=200.webp",
+        "title": "Desde que se lembra, Henry Hill queria ser um gangster. Qual foi seu primeiro trabalho na máfia?",
         "description": "Essa é pra aquecer",
-        "answer": 2,
+        "answer": 1,
         "alternatives": [
-          ".elemento",
-          "*elemento",
-          "#elemento",
-          "%elemento"
+          "Venda de cigarros roubados.",
+          "Estacionamento de carros.",
+          "Ajudante de garçom.",
+          "Ladrão de carros."
         ]
       },
       {
-        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-        "title": "Como fazer um background gradiente com css?",
-        "description": "Faz tempo em haha",
+        "image": "https://media0.giphy.com/media/3jxWIaCKy3a0g/100.webp?cid=ecf05e47544282df49921fe204bbdde781b26b573a539e98&rid=100.webp",
+        "title": "Qual é o nome do bar que é incendiado por Tommy DeVito de Henry e Joe Pesci?",
+        "description": "...",
         "answer": 0,
         "alternatives": [
-           "background: linear-gradient(#e66465, #9198e5);",
-           "background: gradient(#e66465, #9198e5);"
+           "The Bamboo Lounge.",
+           "Old Luna Restaurant.",
+           "Salerno’s Restaurant.",
+           "Gino’s Pizzeria."
         ]
       }
     ],
     "external": [
-      ""
+      "https://aluraquiz-css.omariosouto.vercel.app/",
+      "https://aluraquiz-marvel.omariosouto.vercel.app/api/db"
     ],
     "theme": {
       "colors": {

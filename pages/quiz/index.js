@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import db from '../db.json';
 
-import QuizBackground from '../src/components/QuizBackground';
-import QuizLogo from '../src/components/QuizLogo';
-import Widget, { QuestionWidget } from '../src/components/Widget';
-import Loader from '../src/components/common/Loader';
+import internalDb from '../../db.json';
 
-// import Button from '../src/components/common/Button';
-import QuizContainer from '../src/components/QuizContainer';
+import QuizBackground from '../../src/components/QuizBackground';
+import QuizLogo from '../../src/components/QuizLogo';
+import Widget, { QuestionWidget } from '../../src/components/Widget';
+import Loader from '../../src/components/common/Loader';
+import QuizContainer from '../../src/components/QuizContainer';
 
 const screenStates = {
   QUIZ: 'QUIZ',
@@ -17,10 +16,12 @@ const screenStates = {
   RESULT: 'RESULT',
 };
 
-export default function QuizPage() {
+export default function QuizPage({ dbExterno = internalDb }) {
   const [screenState, setScreenState] = useState(screenStates.LOADING);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [results, setResults] = useState([]);
+
+  const db = dbExterno;
 
   const totalQuestion = db.questions.length;
   const question = db.questions[currentQuestion];
@@ -32,10 +33,17 @@ export default function QuizPage() {
     ]);
   }
 
-  useEffect(() => {
+  function QuizScreen() {
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
     }, 2000);
+  }
+
+  useEffect(() => {
+    QuizScreen();
+    return () => {
+      setScreenState({});
+    };
   }, []);
 
   function handleSubmit() {
@@ -75,11 +83,14 @@ export default function QuizPage() {
 
           </p>
           <ul>
-            {results.map((result, index) => (
-              <li>
-                {`# ${index + 1}: ${result ? 'Acertou' : 'Errou'}`}
-              </li>
-            ))}
+            {results.map((result, index) => {
+              const resultId = `result__${index}`;
+              return (
+                <li key={resultId}>
+                  {`# ${index + 1}: ${result ? 'Acertou' : 'Errou'}`}
+                </li>
+              );
+            })}
           </ul>
         </Widget.Content>
       </Widget>
@@ -125,3 +136,13 @@ export default function QuizPage() {
     </QuizBackground>
   );
 }
+
+QuizPage.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  dbExterno: PropTypes.object,
+};
+
+QuizPage.defaultProps = {
+  // eslint-disable-next-line react/forbid-prop-types
+  dbExterno: internalDb,
+};

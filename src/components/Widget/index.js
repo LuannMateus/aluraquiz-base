@@ -4,8 +4,11 @@ import styled from 'styled-components';
 
 import Button from '../common/Button';
 import AlternativesForm from '../AlternativesForm';
+import BackLinkArrow from '../common/BackLinkArrow';
 
 const Widget = styled.div`
+  max-width: 350px;
+  margin: auto 10%;
   margin-top: 24px;
   margin-bottom: 24px;
   border: 1px solid ${({ theme }) => theme.colors.primary};
@@ -79,7 +82,7 @@ export const QuestionWidget = ({
   return (
     <Widget>
       <Widget.Header>
-        {/* <BackLinkRow href='/' /> */}
+        <BackLinkArrow href="/" />
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestion}`}
         </h3>
